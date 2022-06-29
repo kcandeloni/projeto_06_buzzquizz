@@ -45,6 +45,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 69px auto;
+    display: none; /* O .escondido não estava funcionando no conteudoTela_1. Forcei ele aqui para fazer a pagina 2*/
 }
 
 .conteudoTela_1 img {
@@ -168,5 +169,181 @@ body{
     }
 }
 /* ----- css da tela 2 -------*/
+.conteudoTela_2 {
+    width: 100%;
+    height: auto;
+    margin: 69px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+        .titulo_quiz{
+            width: 100%;
+            height: 227px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg");
+            background-position: center;
+        }
+                .titulo_quiz h1 {
+                    font-size: 39px;
+                    color: #FFFFFF;
+                }
+        
+        .perguntaN {
+            width: 760px;
+            height: 675px;
+            margin-top: 45px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: all 500ms;     
+        }
+                .tituloPerguntaN{
+                    width: 100%;
+                    height: 135px;
+                    background-color: #434CA0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                        .tituloPerguntaN h1 {
+                            font-size: 23px;
+                            font-weight: bold;
+                            color: #FFFFFF;
+                            text-align: center;
+                        }
+                .opcoesN {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                }
+                        .opcoesN div{
+                            width: 333px;
+                            height: 205px;
+                            margin-top: 30px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-between;
+                            transition: all 500ms;
+                        }
+                        .opcoesN div:hover{
+                            cursor: pointer;
+                        }
+                        
+                        .opcoesN div:active{
+                            transform: scale(0.9);
+                        }
+                        .opcoesN div img {
+                            width: 100%;
+                            height: 175px;
+                        } 
+
+                        .opcoesN div p {
+                            font-size: 20px;
+                            font-weight: 700;
+                        }
+
+                        .branquinho {
+                            opacity: 0.4;
+                        }
+                        .acertou {
+                            color: #009C22;
+                        }
+                        .errou {
+                            color: #FF4B4B;
+                        }
+        .resposta {
+            width: 760px;
+            height: auto;
+            margin-top: 45px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column; 
+            margin-top: 30px;   
+        }
+                .tituloResultado{
+                    width: 100%;
+                    height: 135px;
+                    background-color: #EC362D;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                        .tituloResultado h1 {
+                            font-size: 23px;
+                            font-weight: bold;
+                            color: #FFFFFF;
+                            text-align: center;
+                        }
+                .Resultado {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    margin-top: 30px;
+                }
+                        .Resultado img {
+                            width: 330px;
+                            height: 270px;
+                        }
+                .textofinal{
+                    width: 340px;
+                    height: 270px;
+                }
+
+                        .textofinal p {
+                            font-size: 19px;
+                            font-weight: 700;
+                            line-height: 25px;
+                        }
+        .reinicio {
+            width: 260px;
+            height: 50px;
+            border-radius: 15px;
+            background-color: #EC362D;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 500ms;
+            margin-top: 40px;
+        }
+        .reinicio:hover{
+            cursor: pointer;
+        }
+        .reinicio:active{
+            transform: scale(0.8);
+        }
+                .reinicio h1 {
+                    font-size: 21;
+                    color: #FFF5F4;
+                }
+        .voltar{
+            width: 200px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 500ms;
+            margin-top: 5px;
+        }
+            .voltar p{
+                font-size: 21;
+                color: #818181;
+                text-decoration: underline;
+            }
+            .voltar p:hover{
+                cursor: pointer;
+            }
+
+
+
+/* ----- css da tela 3 -------*/
 
 
