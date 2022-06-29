@@ -345,5 +345,15 @@ body{
 
 
 /* ----- css da tela 3 -------*/
+.conteudoTela_3_1 {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 69px;
+    color: #FFFFFF;
+}
+.informacoesdoquizz{
 
+}
 
