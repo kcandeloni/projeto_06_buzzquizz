@@ -33,9 +33,7 @@ body{
     color: #FFFFFF;
 }  
 
-.escondido{
-    display: none;
-}
+
 
 /* ----- css da tela 1 -------*/
 
@@ -45,7 +43,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 69px auto;
-    display: none; /* O .escondido não estava funcionando no conteudoTela_1. Forcei ele aqui para fazer a pagina 2*/
+    display: flex; /* O .escondido não estava funcionando no conteudoTela_1. Forcei ele aqui para fazer a pagina 2*/
 }
 
 .conteudoTela_1 img {
@@ -155,7 +153,6 @@ body{
     line-height: 25px;
 }
 
-
 @media (max-width: 1100px) {
     .conteudoTela_1{
         width: 380px;
@@ -169,6 +166,7 @@ body{
     }
 }
 /* ----- css da tela 2 -------*/
+
 .conteudoTela_2 {
     width: 100%;
     height: auto;
@@ -344,6 +342,9 @@ body{
 
 
 
+            .escondido{
+                display: none;
+            }
 /* ----- css da tela 3 -------*/
 
 
