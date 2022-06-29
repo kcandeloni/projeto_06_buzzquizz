@@ -22,39 +22,39 @@
         <div class="blocoQuizzes"><!-- add .escondido se usuário já tem quizzes-->
             <div class="caixaCriarQuizz">
                 <p>Você não criou nenhum quizz ainda :(</p>
-                <button onclick="openTela_3();">Criar Quizz</button>
+                <button onclick="openTela('conteudoTela_1','conteudoTela_3');">Criar Quizz</button>
             </div>
         </div>
         <div class="seusQuizzes"><!-- add .escondido enqaunto a lista de quizzes do usuário esta vazia-->
             <div class="subtituloBotao">
-                <h2>Seus os Quizzes</h2><ion-icon onclick="openTela_3();" name="add-circle"></ion-icon>
+                <h2>Seus os Quizzes</h2><ion-icon onclick="openTela('conteudoTela_1','conteudoTela_3');" name="add-circle"></ion-icon>
             </div>  
             <div class="blocoQuizzes">
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
@@ -63,19 +63,19 @@
         <h2>Todos os Quizzes</h2>
         <div class="todosQuizzes">
             <div class="blocoQuizzes">
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
-                <div class="caixaQuizz"><!--Molde vai para o JS depois-->
+                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
                     <img src="img/Rectangle 34.png" >
                     <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                 </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="conteudoTela_2">
+    <div class="conteudoTela_2 escondido">
         <div class="titulo_quiz"><h1>O quão Potterhead vc é?</h1></div> 
         <div class="perguntaN">
             <div class="tituloPerguntaN">
@@ -171,7 +171,7 @@
         </div>
 
         <div class="reinicio"><h1>Reiniciar Quizz</h1></div>
-        <div class="voltar"> <p>Voltar pra Home</p> </div>
+        <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
 
     </div>
     <div class="conteudoTela_3_1">
