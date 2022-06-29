@@ -22,12 +22,12 @@
         <div class="blocoQuizzes"><!-- add .escondido se usuário já tem quizzes-->
             <div class="caixaCriarQuizz">
                 <p>Você não criou nenhum quizz ainda :(</p>
-                <button onclick="openTela('conteudoTela_1','conteudoTela_3');">Criar Quizz</button>
+                <button onclick="openTela('conteudoTela_1','conteudoTela_3_1');">Criar Quizz</button>
             </div>
         </div>
         <div class="seusQuizzes"><!-- add .escondido enqaunto a lista de quizzes do usuário esta vazia-->
             <div class="subtituloBotao">
-                <h2>Seus os Quizzes</h2><ion-icon onclick="openTela('conteudoTela_1','conteudoTela_3');" name="add-circle"></ion-icon>
+                <h2>Seus os Quizzes</h2><ion-icon onclick="openTela('conteudoTela_1','conteudoTela_3_1');" name="add-circle"></ion-icon>
             </div>  
             <div class="blocoQuizzes">
                 <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
@@ -174,7 +174,7 @@
         <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
 
     </div>
-    <div class="conteudoTela_3_1">
+    <div class="conteudoTela_3_1 escondido">
         <p>Comece pelo começo</p>
         <div class="informacoesdoquizz">
             <input type="text" placeholder="Título do seu quizz">
