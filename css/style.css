@@ -43,7 +43,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 69px auto;
-    display: flex; /* O .escondido não estava funcionando no conteudoTela_1. Forcei ele aqui para fazer a pagina 2*/
+    display: flex; 
 }
 
 .conteudoTela_1 img {
