@@ -33,12 +33,10 @@ body{
     color: #FFFFFF;
 }  
 
-
-
 /* ----- css da tela 1 -------*/
 
 .conteudoTela_1 {
-    width: 1120px;
+    width: 1068px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -52,7 +50,7 @@ body{
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
-    margin: 14px 15px 0 0;
+    margin: 8px 8px;
 }
 
 .conteudoTela_1 h2{
@@ -64,13 +62,13 @@ body{
     color: #000000;
 
     margin-top: 35px;
-    margin-left: 20px;
+    margin-left: 8px;
 }
 
 .subtituloBotao {
+    width: 348px;
     display: flex;
     justify-content: space-between;
-    width: 360px;
 }
 
 .subtituloBotao ion-icon{
@@ -82,10 +80,10 @@ body{
 }
 
 .blocoQuizzes {
-    width: 1120px;
+    
     display: flex;
     flex-wrap: wrap;
-    margin-left: 20px;
+    
 }
 
 .caixaQuizz{
@@ -110,7 +108,7 @@ body{
 }
 
 .caixaCriarQuizz {
-    width: 1050px;
+    width: 1068px;
     height: 181px;
 
     background: #FAFAFA;
@@ -122,6 +120,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0 8px;
 }
 
 .caixaCriarQuizz p {
@@ -375,19 +374,12 @@ body{
     background-color: #EC362D;
 }
 
-
-
-/*-------Css globais-------*/
-.escondido{
-    display: none;
-}
-
 @media (max-width: 1100px) {
     .conteudoTela_1{
-        width: 380px;
+        width: 356px;
     }
     .blocoQuizzes{
-        width: 380px;
+        width: 356px;
     }
     .caixaCriarQuizz{
         margin-top: 30px;
@@ -396,4 +388,8 @@ body{
     .informacoesdoquizz{
         width: 100%;
     }
+}
+
+.escondido{
+    display: none;
 }
