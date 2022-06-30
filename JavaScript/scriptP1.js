@@ -35,7 +35,7 @@ function renderizaQuizzes () {
         divQuizzes.innerHTML +=`
         <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
         <img src=${dataQuizz[i].image} >
-        <h3>${dataQuizz [i].title}</h3>
+        <h3>${dataQuizz[i].title}</h3>
         </div>`;
     }
 }
