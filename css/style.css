@@ -33,17 +33,14 @@ body{
     color: #FFFFFF;
 }  
 
-
-
 /* ----- css da tela 1 -------*/
 
 .conteudoTela_1 {
-    width: 1120px;
+    width: 1068px;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin: 69px auto;
-    display: flex; 
 }
 
 .conteudoTela_1 img {
@@ -52,7 +49,7 @@ body{
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
-    margin: 14px 15px 0 0;
+    margin: 8px 8px;
 }
 
 .conteudoTela_1 h2{
@@ -64,13 +61,13 @@ body{
     color: #000000;
 
     margin-top: 35px;
-    margin-left: 20px;
+    margin-left: 8px;
 }
 
 .subtituloBotao {
+    width: 348px;
     display: flex;
     justify-content: space-between;
-    width: 360px;
 }
 
 .subtituloBotao ion-icon{
@@ -82,10 +79,10 @@ body{
 }
 
 .blocoQuizzes {
-    width: 1120px;
+    
     display: flex;
     flex-wrap: wrap;
-    margin-left: 20px;
+    
 }
 
 .caixaQuizz{
@@ -110,7 +107,7 @@ body{
 }
 
 .caixaCriarQuizz {
-    width: 1050px;
+    width: 1068px;
     height: 181px;
 
     background: #FAFAFA;
@@ -122,6 +119,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 75px 0 8px 8px;
 }
 
 .caixaCriarQuizz p {
@@ -153,18 +151,6 @@ body{
     line-height: 25px;
 }
 
-@media (max-width: 1100px) {
-    .conteudoTela_1{
-        width: 380px;
-    }
-    .blocoQuizzes{
-        width: 380px;
-    }
-    .caixaCriarQuizz{
-        margin-top: 30px;
-        width: 340px;
-    }
-}
 /* ----- css da tela 2 -------*/
 
 .conteudoTela_2 {
@@ -339,23 +325,127 @@ body{
             .voltar p:hover{
                 cursor: pointer;
             }
-
-
-
-            .escondido{
-                display: none;
-            }
 /* ----- css da tela 3 -------*/
-.conteudoTela_3_1 {
+.conteudoTela_3_1{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     margin-top: 69px;
-    color: #FFFFFF;
+    padding-top: 70px;
+    background-color: #fafafa;
 }
-/*
+.conteudoTela_3_1 > p{
+    font-size: 23px;
+    font-weight: bold;
+}
 .informacoesdoquizz{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600px;
+    height: 256px;
+    margin: 25px 0 85px 0;
+    padding: 21px 18px 21px 18px;
+    background-color: #FFFFFF;
+}
+.informacoesdoquizz input{
+    width: 100%;
+    height: 46px;
+    background-color: #FFFFFF;
+    border: 1px solid #D1D1D1;    
+}
+.informacoesdoquizz ::placeholder{
+    color: #BABABA;
+    font-size: 19px;
+    font-style: italic;
+}
+.conteudoTela_3_1 button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    width: 370px;
+    height: 54px;
+    color: #FFFFFF;
+    font-size: 21px;
+    background-color: #EC362D;
+    border: none;
+}
+/* --------- MOBILE -----------------*/
+@media (max-width: 1100px) {
+    .conteudoTela_1{
+        width: 356px;
+    }
+    .blocoQuizzes{
+        width: 356px;
+    }
+    .caixaCriarQuizz{
+        margin-top: 30px;
+        width: 340px;
+    }
+    .informacoesdoquizz{
+        width: 100%;
+    }
+/*-------------- mobile tela 2 -----------*/
+
+    .titulo_quiz {
+        height: 140px;
+    }
+    .titulo_quiz h1 {
+        font-size: 19px;
+    }
+    .perguntaN {
+        width: 375px;
+        height: 435px;
+        margin-top: 20px;
+    }
+    .tituloPerguntaN{
+        height: 90px;
+    }
+    .tituloPerguntaN h1{
+        font-size: 19px;
+    }
+    .opcoesN div{
+        width: 153px;
+        height: 113px;
+        margin-top: 10px;
+    }
+    .opcoesN div p{
+        font-size: 13px;
+    }
+    .resposta {
+        width: 375px;
+        margin-top: 20px;
+    }
+    .tituloResultado{
+        height: 88px;
+    }
+    .tituloResultado h1{
+        font-size: 19px;
+    }
+    .Resultado{
+        margin-top: 10px;
+    }
+    .Resultado img {
+        width: 315px;
+        height: 270px;
+    }
+    .textofinal{
+        height: 120px ;
+        margin-top: 10px;
+    }
+    .textofinal p{
+        font-size: 17px;
+        line-height: 20px;
+    }
+    .reinicio{
+        margin-top: 10px;
+    }
 
 }
 
+.escondido{
+    display: none;
+}
