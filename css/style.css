@@ -371,6 +371,7 @@ body{
     color: #FFFFFF;
     font-size: 21px;
     background-color: #EC362D;
+    border: none;
 }
 
 @media (max-width: 1100px) {
