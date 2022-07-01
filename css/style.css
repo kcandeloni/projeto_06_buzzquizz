@@ -167,7 +167,7 @@ body{
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg");
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
             background-position: center;
         }
                 .titulo_quiz h1 {
@@ -310,12 +310,13 @@ body{
         .voltar{
             width: 200px;
             height: 50px;
+            margin: 5px auto ;
             border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: all 500ms;
-            margin-top: 5px;
+            
         }
             .voltar p{
                 font-size: 21;
@@ -326,17 +327,17 @@ body{
                 cursor: pointer;
             }
 /* ----- css da tela 3 -------*/
-.conteudoTela_3_1{
+.conteudoTela_3{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     margin-top: 69px;
     padding-top: 70px;
     background-color: #fafafa;
 }
-.conteudoTela_3_1 > p{
+.conteudoTela_3 > p{
     font-size: 23px;
     font-weight: bold;
 }
@@ -361,17 +362,66 @@ body{
     font-size: 19px;
     font-style: italic;
 }
-.conteudoTela_3_1 button{
+.conteudoTela_3 button{
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    width: 370px;
+    width: auto;
+    padding: 0 50px 0 50px;
     height: 54px;
     color: #FFFFFF;
     font-size: 21px;
     background-color: #EC362D;
     border: none;
+}
+.boxcriacaoperguntas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600px;
+    height: auto;
+    row-gap: 24px;
+    padding: 0 18px 0 18px;
+    margin: 36px 0 81px 0;
+    background-color: #FFFFFF;
+}
+.boxpergunta{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    width: 100%;
+    row-gap: 14px;
+    margin-top: 30px;
+}
+.boxpergunta input{
+    height: 46px;
+    width: 100%;
+}
+.boxpergunta p{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.pergunta , .respostacorreta{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 155px;
+    width: 100%;
+}
+.respostasincorretas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 450px;
+}
+.boxperguntafechado{
+    height: 74px;
+    width: 100%;
+    background-color: blue;
 }
 /* --------- MOBILE -----------------*/
 @media (max-width: 1100px) {
@@ -414,6 +464,9 @@ body{
     }
     .opcoesN div p{
         font-size: 13px;
+    }
+    .opcoesN div img{
+        height: 100px;
     }
     .resposta {
         width: 375px;

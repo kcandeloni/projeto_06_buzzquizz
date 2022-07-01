@@ -156,10 +156,11 @@
         </div>
 
         <div class="reinicio"><h1>Reiniciar Quizz</h1></div>
-        <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
-
+        
     </div>
-    <div class="conteudoTela_3_1 escondido">
+    <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
+
+    <div class="conteudoTela_3 escondido">
         <p>Comece pelo começo</p>
         <div class="informacoesdoquizz">
             <input type="text" placeholder="Título do seu quizz">
@@ -169,7 +170,56 @@
         </div>
         <button onclick="inseririnfobasicas()">Prosseguir pra criar perguntas</button>
     </div>
-
+    <div class="conteudoTela_3 escondido">
+        <p>Crie suas perguntas</p>
+        <div class="boxcriacaoperguntas">
+            <div class="boxpergunta">
+                <div class="pergunta">
+                    <p>Pergunta 1</p>
+                    <div class="textocriacao">
+                        <input type="text" placeholder="Texto da pergunta">
+                    </div>
+                    <div class="corpergunta">
+                        <input type="text" placeholder="Cor de fundo da pergunta">
+                    </div>
+                </div>
+                <div class="respostacorreta">
+                    <p>Resposta correta</p>
+                    <div class="textocriacao">
+                        <input type="text" placeholder="Resposta correta">
+                    </div>
+                    <div class="urlimagem">
+                        <input type="text" placeholder="URL da imagem">
+                    </div>
+                </div>
+                <div class="respostasincorretas">
+                    <p>Respostas incorretas</p>
+                    <div class="textocriacao">
+                        <input type="text" placeholder="Resposta incorreta 1">
+                    </div>
+                    <div class="urlimagem">
+                        <input type="text" placeholder="URL da imagem 1">
+                    </div>
+                    <div class="textocriacao">
+                        <input type="text" placeholder="Resposta incorreta 2">
+                    </div>
+                    <div class="urlimagem">
+                        <input type="text" placeholder="URL da imagem 2">
+                    </div>
+                    <div class="textocriacao">
+                        <input type="text" placeholder="Resposta incorreta 3">
+                    </div>
+                    <div class="urlimagem">
+                        <input type="text" placeholder="URL da imagem 3">
+                    </div>
+                </div>
+            </div>
+            <div class="boxperguntafechado">a</div>
+            <div class="boxperguntafechado">a</div>
+        </div>
+        <button>Prosseguir para criar níveis</button>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
