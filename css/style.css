@@ -465,6 +465,9 @@ body{
     .opcoesN div p{
         font-size: 13px;
     }
+    .opcoesN div img{
+        height: 100px;
+    }
     .resposta {
         width: 375px;
         margin-top: 20px;
