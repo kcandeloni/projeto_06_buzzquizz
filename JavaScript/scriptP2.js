@@ -21,10 +21,12 @@ function rederizaPageQuizz (Quizz) {
         if (element.id == controle){
             console.log('entrei');
             tela2.innerHTML = '';
+            
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
-            imgtitulo.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${element.image})`;
-            console.log(element);   
+                document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+            
+            
         }
     }
     /* Aqui chama função par renderizar o layout da tela dois Leonardo  */

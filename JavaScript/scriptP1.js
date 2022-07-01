@@ -6,6 +6,7 @@ let myQuizzes = [];
 function openTela (fecha , abre){
     document.querySelector(`.${fecha}`).classList.toggle('escondido');
     document.querySelector(`.${abre}`).classList.toggle('escondido');
+    document.querySelector(".conteudoTela_2") = ''
 }
 
 function getQuizzes () {
@@ -31,7 +32,6 @@ function renderizaQuizzes () {
     divQuizzes.innerHTML = "";
 
     for(let i = 0; i < dataQuizz.length; i++){
-        console.log(dataQuizz[1]);
         divQuizzes.innerHTML +=`
         <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
         <img src=${dataQuizz[i].image} >

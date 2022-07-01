@@ -167,7 +167,7 @@ body{
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg");
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
             background-position: center;
         }
                 .titulo_quiz h1 {
@@ -310,12 +310,13 @@ body{
         .voltar{
             width: 200px;
             height: 50px;
+            margin: 5px auto ;
             border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: all 500ms;
-            margin-top: 5px;
+            
         }
             .voltar p{
                 font-size: 21;
