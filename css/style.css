@@ -426,18 +426,26 @@ body{
 /* --------- MOBILE -----------------*/
 @media (max-width: 1100px) {
     .conteudoTela_1{
-        width: 356px;
+        width: 95vw;
     }
     .blocoQuizzes{
-        width: 356px;
+        width: 95vw;
+        flex-direction: column;
     }
     .caixaCriarQuizz{
         margin-top: 30px;
-        width: 340px;
+        width: 95vw;
+        margin-left: 0;
+        margin-left: 0;
     }
     .informacoesdoquizz{
         width: 100%;
     }
+    .conteudoTela_1 img {
+        width: 95vw;
+        margin-left: 0;
+        margin-left: 0;
+        }
 /*-------------- mobile tela 2 -----------*/
 
     .titulo_quiz {
