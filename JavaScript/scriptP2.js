@@ -1,11 +1,10 @@
 let controle = 0;
+let contador = 0;
 let questoes = [] ;
 let opcoes = [];
 function openQuizz (idQuizz) {
     const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
     controle = idQuizz;
-    console.log(controle);
-    console.log("entrei");
     promise.then(rederizaPageQuizz);
 }
 
@@ -18,14 +17,13 @@ function rederizaPageQuizz (Quizz) {
     for (let i = 0; i < materialTela2.length; i++) {
         let element = materialTela2[i];
         if (element.id == controle){
-            console.log('entrei');
             tela2.innerHTML = ''; 
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
                 document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
             
             questoes = element.questions;
-            renderizarpergunta(0);
+            renderizarpergunta(contador);
         }
     }
     /* Aqui chama função par renderizar o layout da tela dois Leonardo  */
@@ -33,8 +31,9 @@ function rederizaPageQuizz (Quizz) {
 }
 
 function Permissaodepergunta(indice){
-    "&& document.querySelector(`.clicado${indice}`) !== null"
-    if(indice < questoes.length){
+    let k = document.querySelectorAll(".selecionado").length
+    console.log(k)
+    if(indice < questoes.length && k < indice ){
         setTimeout(renderizarpergunta(indice +1), 2000);
     }
 };
@@ -74,8 +73,6 @@ function renderizarpergunta(indice){
 }
 
 function verificar(elemento){
-     console.log(elemento);
-
     if (elemento.classList.contains("acertou") || elemento.classList.contains("errou") || elemento.classList.contains("branquinho")){
         return;
     }
@@ -89,6 +86,9 @@ function verificar(elemento){
                     a[i].classList.add("branquinho")
                 }
             }
+       
+        contador += 1
+        renderizarpergunta(contador) ;
     }
     else if(elemento.classList.contains("false")){
         elemento.classList.add("errou")
@@ -100,5 +100,7 @@ function verificar(elemento){
                     a[i].classList.add("branquinho")
                 }
             }
+        contador += 1
+        renderizarpergunta(contador);
     }
 }
