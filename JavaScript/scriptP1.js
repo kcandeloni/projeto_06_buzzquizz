@@ -18,8 +18,8 @@ function getQuizzes () {
 
 function listaQuizzes (baseQuizz) {
     dataQuizz = baseQuizz.data;
-    renderizaQuizzes();
     renderizaMeusQuizzes();
+    renderizaQuizzes();
 }
 
 function alertaErro (erro) {
@@ -31,7 +31,6 @@ function renderizaQuizzes () {
     divQuizzes.innerHTML = "";
 
     for(let i = 0; i < dataQuizz.length; i++){
-        console.log(dataQuizz[1]);
         divQuizzes.innerHTML +=`
         <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
         <img src=${dataQuizz[i].image} >
