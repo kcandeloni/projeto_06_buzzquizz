@@ -131,6 +131,24 @@ function rederizarResposta(){
         console.log(levels)
         let tela2 = document.querySelector(".conteudoTela_2");
         console.log(levels.length-1)
+        /* ordena level*/
+        let desordenado = true;
+        let aux = levels[0];
+        while(desordenado){
+            for(let i = 1; i < levels.length; i++){
+                if(aux.minValue > levels[i].minValue){
+                    levels[i-1] = levels[i];
+                    levels[i] = aux;
+                }
+                aux = levels[i];
+                desordenado = false;
+                for(let y = 1; y < levels.length; y++){
+                    if(levels[i-1].minValue >= levels[i].minValue ){
+                        desordenado = true;
+                    }
+                }
+            }
+        }
         for(i = levels.length-1; i > -1 ; i--){
             console.log(i);
             console.log(media >= levels[i].minValue);
