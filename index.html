@@ -22,12 +22,12 @@
         <div class="blocoQuizzes"><!-- add .escondido se usuário já tem quizzes-->
             <div class="caixaCriarQuizz">
                 <p>Você não criou nenhum quizz ainda :(</p>
-                <button onclick="openTela('conteudoTela_1','conteudoTela_3_1');">Criar Quizz</button>
+                <button onclick="openTela('conteudoTela_1','conteudoTela_3');">Criar Quizz</button>
             </div>
         </div>
         <div class="seusQuizzes"><!-- add .escondido enqaunto a lista de quizzes do usuário esta vazia-->
             <div class="subtituloBotao">
-                <h2>Seus os Quizzes</h2><ion-icon onclick="openTela('conteudoTela_1','conteudoTela_3_1');" name="add-circle"></ion-icon>
+                <h2>Seus os Quizzes</h2><ion-icon onclick="openTela('conteudoTela_1','conteudoTela_3');" name="add-circle"></ion-icon>
             </div>  
             <div class="blocoQuizzes">
                 <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
@@ -172,51 +172,7 @@
     </div>
     <div class="conteudoTela_3 escondido">
         <p>Crie suas perguntas</p>
-        <div class="boxcriacaoperguntas">
-            <div class="boxpergunta">
-                <div class="pergunta">
-                    <p>Pergunta 1</p>
-                    <div class="textocriacao">
-                        <input type="text" placeholder="Texto da pergunta">
-                    </div>
-                    <div class="corpergunta">
-                        <input type="text" placeholder="Cor de fundo da pergunta">
-                    </div>
-                </div>
-                <div class="respostacorreta">
-                    <p>Resposta correta</p>
-                    <div class="textocriacao">
-                        <input type="text" placeholder="Resposta correta">
-                    </div>
-                    <div class="urlimagem">
-                        <input type="text" placeholder="URL da imagem">
-                    </div>
-                </div>
-                <div class="respostasincorretas">
-                    <p>Respostas incorretas</p>
-                    <div class="textocriacao">
-                        <input type="text" placeholder="Resposta incorreta 1">
-                    </div>
-                    <div class="urlimagem">
-                        <input type="text" placeholder="URL da imagem 1">
-                    </div>
-                    <div class="textocriacao">
-                        <input type="text" placeholder="Resposta incorreta 2">
-                    </div>
-                    <div class="urlimagem">
-                        <input type="text" placeholder="URL da imagem 2">
-                    </div>
-                    <div class="textocriacao">
-                        <input type="text" placeholder="Resposta incorreta 3">
-                    </div>
-                    <div class="urlimagem">
-                        <input type="text" placeholder="URL da imagem 3">
-                    </div>
-                </div>
-            </div>
-            <div class="boxperguntafechado">a</div>
-            <div class="boxperguntafechado">a</div>
-        </div>
+        <div class="boxcriacaoperguntas"></div>
         <button>Prosseguir para criar níveis</button>
     </div>
     
