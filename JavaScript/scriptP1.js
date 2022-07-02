@@ -8,6 +8,10 @@ function openTela (fecha , abre){
     document.querySelector(`.${abre}`).classList.toggle('escondido');
 }
 
+function comparador() { 
+	return Math.random() - 0.5; 
+}
+
 function getQuizzes () {
     const promise = axios.get(`${linkQuizzes}`);
 

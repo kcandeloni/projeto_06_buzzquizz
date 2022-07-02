@@ -2,15 +2,20 @@ let controle = 0;
 let contador = 0;
 let questoes = [] ;
 let opcoes = [];
+let idReinicia;
 function openQuizz (idQuizz) {
     const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
     controle = idQuizz;
     promise.then(rederizaPageQuizz);
+    
 }
 
 
 function rederizaPageQuizz (Quizz) {
-
+    contador = 0;
+    questoes = [] ;
+    opcoes = [];
+    idReinicia = Quizz;
     let materialTela2 = Quizz.data;
     let tela2 = document.querySelector(".conteudoTela_2")
     let imgtitulo = document.querySelector(".titulo_quiz")
@@ -23,6 +28,7 @@ function rederizaPageQuizz (Quizz) {
                 document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
             
             questoes = element.questions;
+            questoes.sort(comparador);
             renderizarpergunta(contador);
         }
     }
@@ -40,6 +46,7 @@ function Permissaodepergunta(indice){
 function renderizarpergunta(indice){
     let a = questoes[indice]
     opcoes = a.answers
+    opcoes.sort(comparador);
     let tela2 = document.querySelector(".conteudoTela_2")
     tela2.innerHTML +=
         `<div class="perguntaN">
@@ -65,7 +72,8 @@ function renderizarpergunta(indice){
                 </div>
             </div>
             </div>
-        `;
+            <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
+        `;//coloqui o botão de reinciar nessa tela só pra testar, deve ficar na tela de finalziação do quizz
     Permissaodepergunta(indice);
 }
 

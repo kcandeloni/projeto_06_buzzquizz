@@ -13,7 +13,7 @@ body{
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 100vw;
     height: 69px;
 
     background: #EC362D;
@@ -50,6 +50,7 @@ body{
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
     margin: 8px 8px;
+    transition: width linear 0.2s;
 }
 
 .conteudoTela_1 h2{
@@ -104,6 +105,8 @@ body{
 
 
     color: #FFFFFF;
+    word-break: break-all;
+    
 }
 
 .caixaCriarQuizz {
@@ -120,6 +123,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 75px 0 8px 8px;
+    transition: width linear 0.2s;
 }
 
 .caixaCriarQuizz p {
@@ -133,6 +137,7 @@ body{
     word-break:normal;
 
     color: #B9B9B9;
+    word-break: break-all;
 }
 
 .caixaCriarQuizz button {
