@@ -6,7 +6,7 @@ let opcoes = [];
 let levels =[];
 let idReinicia;
 function openQuizz (idQuizz) {
-    const promise = axios.get("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
     controle = idQuizz;
     promise.then(rederizaPageQuizz);
     
@@ -28,7 +28,9 @@ function rederizaPageQuizz (Quizz) {
             tela2.innerHTML = ''; 
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
-                document.querySelector(".titulo_quiz").style.background =`linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)) url(${element.image})  center`;
+                //document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+                document.querySelector(".titulo_quiz").style.backgroundImage= `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url(${element.image})`;
             
             questoes = element.questions;
             levels = element.levels;
