@@ -6,7 +6,7 @@ let opcoes = [];
 let levels =[];
 let idReinicia;
 function openQuizz (idQuizz) {
-    const promise = axios.get("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
     controle = idQuizz;
     promise.then(rederizaPageQuizz);
     
@@ -14,6 +14,7 @@ function openQuizz (idQuizz) {
 
 
 function rederizaPageQuizz (Quizz) {
+    acertos = 0;
     contador = 0;
     questoes = [] ;
     opcoes = [];
@@ -27,7 +28,9 @@ function rederizaPageQuizz (Quizz) {
             tela2.innerHTML = ''; 
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
-                document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+                //document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+                document.querySelector(".titulo_quiz").style.backgroundImage= `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url(${element.image})`;
             
             questoes = element.questions;
             levels = element.levels;
@@ -144,7 +147,7 @@ function rederizarResposta(){
                 </div>
             </div>
     
-            <div class="reinicio"><h1>Reiniciar Quizz</h1></div>
+            <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
             <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
         </div>`;
         let d = document.querySelector(".conteudoTela_2").lastElementChild;
@@ -164,7 +167,7 @@ function rederizarResposta(){
             </div>
         </div>
 
-        <div class="reinicio"><h1>Reiniciar Quizz</h1></div>
+        <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
         <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
     </div>`;
     let d = document.querySelector(".conteudoTela_2").lastElementChild;
