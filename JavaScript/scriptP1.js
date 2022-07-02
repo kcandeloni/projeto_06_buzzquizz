@@ -1,7 +1,18 @@
 const linkQuizzes = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
 let dataQuizz;
-let myQuizzes = [];
 
+/*
+const exemplo = objeto gerado tela 3;
+
+const exemploSerializado = JSON.stringify(exemplo); // Array convertida pra uma string
+
+localStorage.setItem("lista", exemploSerializado); // Armazenando a string na chave "lista" do Local Storage
+*/
+const listaSerializada = localStorage.getItem("lista"); // Pegando de volta a string armazenada na chave "lista"
+
+let myQuizzes = JSON.parse(listaSerializada); // Transformando a string de volta na array original
+
+console.log(myQuizzes);
 
 function openTela (fecha , abre){
     document.querySelector(`.${fecha}`).classList.toggle('escondido');
@@ -45,14 +56,23 @@ function renderizaQuizzes () {
 }
 
 function renderizaMeusQuizzes () {
-    /* myQuizzes.push(dataQuizz.filter(function(elem){if(elem.id.includes(localStorage.getItem(elem.id))){return true}}else false))*/
     if( myQuizzes.length > 0) {
         document.querySelector('.caixaCriarQuizz').classList.add('escondido');
         document.querySelector('.seusQuizzes').classList.remove('escondido');
+        const divQuizzes = document.querySelector('.seusQuizzes .blocoQuizzes');
+        divQuizzes.innerHTML = "";
+
+        for(let i = 0; i < myQuizzes.length; i++){
+            divQuizzes.innerHTML +=`
+            <div class="caixaQuizz" onclick="openQuizz('${myQuizzes[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
+            <img src=${myQuizzes[i].image} >
+            <h3>${myQuizzes[i].title}</h3>
+            </div>`;
+            }
     }
     else {
         document.querySelector('.seusQuizzes').classList.add('escondido');
-        //renderizaQuizzes(myQuizzes); dataQuizzes = dataquizzes.filter()
+            
     }
 }
 
