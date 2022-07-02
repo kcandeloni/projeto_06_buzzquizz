@@ -14,6 +14,7 @@ function openQuizz (idQuizz) {
 
 
 function rederizaPageQuizz (Quizz) {
+    acertos = 0;
     contador = 0;
     questoes = [] ;
     opcoes = [];
@@ -27,7 +28,7 @@ function rederizaPageQuizz (Quizz) {
             tela2.innerHTML = ''; 
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
-                document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+                document.querySelector(".titulo_quiz").style.background =`linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)) url(${element.image})  center`;
             
             questoes = element.questions;
             levels = element.levels;
@@ -77,8 +78,8 @@ function renderizarpergunta(indice){
             </div>
             </div>`;
         let d = document.querySelector(".conteudoTela_2").lastElementChild;
-        d.scrollIntoView();
-    Permissaodepergunta(indice);
+        d.scrollIntoView({behavior: "smooth"});
+    Permissaodepergunta(indice); 
 }
 
 function verificar(elemento){
@@ -122,56 +123,37 @@ function verificar(elemento){
 function rederizarResposta(){
     
     if (questoes.length === document.querySelectorAll(".selecionado").length){
+        
         let media = Math.floor((acertos/questoes.length)*100);
         console.log(media);
-        console.log(levels.length)
+        console.log(levels)
         let tela2 = document.querySelector(".conteudoTela_2");
-        console.log("teste");
-        for (let i = 0; i < levels.length; i++) {
-            const element = levels[i];
-            if (media < levels[i+1].minValue){
+        console.log(levels.length-1)
+        for(i = levels.length-1; i > -1 ; i--){
+            console.log(i);
+            console.log(media >= levels[i].minValue);
+            if(media >= levels[i].minValue){
                 tela2.innerHTML +=
-                ` <div class="resposta">
-                <div class="tituloResultado">
-                    <h1>${media}% de acerto:${element.title}</h1>
-                </div>
-                <div class="Resultado">
-                    <img src=${element.image}>
-                    <div class="textofinal">
-                        <p>${element.text}</p>
+                `<div class="resposta">
+                    <div class="tituloResultado">
+                        <h1>${media}% de acerto:${levels[i].title}</h1>
                     </div>
+                    <div class="Resultado">
+                        <img src=${levels[i].image}>
+                        <div class="textofinal">
+                            <p>${levels[i].text}</p>
+                        </div>
+                    </div>
+                 </div>
     
-                </div>
-            </div>
-    
-            <div class="reinicio"><h1>Reiniciar Quizz</h1></div>
+            <div class="reinicio" onclick="rederizaPageQuizz(idReinicia)"><h1>Reiniciar Quizz</h1></div>
             <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
-        </div>`;
-        let d = document.querySelector(".conteudoTela_2").lastElementChild;
-        d.scrollIntoView();
-            }else if (media > levels[levels.length-1].minValue){
-            tela2.innerHTML +=
-            ` <div class="resposta">
-            <div class="tituloResultado">
-                <h1>${media}% de acerto:${element.title}</h1>
-            </div>
-            <div class="Resultado">
-                <img src=${element.image}>
-                <div class="textofinal">
-                    <p>${element.text}</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="reinicio"><h1>Reiniciar Quizz</h1></div>
-        <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
-    </div>`;
-    let d = document.querySelector(".conteudoTela_2").lastElementChild;
-    d.scrollIntoView();
+            </div>`;
+            let d = document.querySelector(".conteudoTela_2").lastElementChild;
+            d.scrollIntoView({behavior: "smooth"});
+            break;
+            }
         }
-
-    }
 }
     else return;
 }
