@@ -395,11 +395,12 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: auto;
+    height: 800px;
     width: 100%;
     row-gap: 14px;
     padding: 0 18px 27px 18px;
     background-color: #FFFFFF;
+    transition: height ease-in 1s;
 }
 .boxpergunta input{
     height: 46px;
@@ -438,6 +439,7 @@ body{
     width: 100%;
     padding: 0 18px 0 18px;
     background-color: #FFFFFF;
+    transition: all 1s;
 }
 .boxperguntafechado ion-icon{
     width: 26px;
