@@ -26,7 +26,7 @@ function rederizaPageQuizz (Quizz) {
             renderizarpergunta(contador);
         }
     }
-    renderizaQuestions(element.questions, element.questions);
+    
 }
 
 function Permissaodepergunta(indice){
@@ -35,6 +35,7 @@ function Permissaodepergunta(indice){
     if(indice < questoes.length && k < indice ){
         setTimeout(renderizarpergunta(indice +1), 2000);
     }
+    return;
 }
 
 function renderizarpergunta(indice){
@@ -86,6 +87,7 @@ function verificar(elemento){
        
         contador += 1
         renderizarpergunta(contador) ;
+        return;
     }
     else if(elemento.classList.contains("false")){
         elemento.classList.add("errou")
@@ -99,5 +101,6 @@ function verificar(elemento){
             }
         contador += 1
         renderizarpergunta(contador);
+        return;
     }
 }
