@@ -1,4 +1,4 @@
-const linkQuizzes = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
+const linkQuizzes = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
 let dataQuizz;
 
 /*
