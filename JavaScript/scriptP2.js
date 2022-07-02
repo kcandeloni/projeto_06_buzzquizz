@@ -1,7 +1,9 @@
 let controle = 0;
 let contador = 0;
+let acertos = 0;
 let questoes = [] ;
 let opcoes = [];
+let levels =[];
 let idReinicia;
 function openQuizz (idQuizz) {
     const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
@@ -12,6 +14,7 @@ function openQuizz (idQuizz) {
 
 
 function rederizaPageQuizz (Quizz) {
+    acertos = 0;
     contador = 0;
     questoes = [] ;
     opcoes = [];
@@ -25,14 +28,17 @@ function rederizaPageQuizz (Quizz) {
             tela2.innerHTML = ''; 
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
-                document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+                //document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+                document.querySelector(".titulo_quiz").style.backgroundImage= `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url(${element.image})`;
             
             questoes = element.questions;
+            levels = element.levels;
             questoes.sort(comparador);
             renderizarpergunta(contador);
         }
     }
-    renderizaQuestions(element.questions, element.questions);
+    
 }
 
 function Permissaodepergunta(indice){
@@ -41,6 +47,7 @@ function Permissaodepergunta(indice){
     if(indice < questoes.length && k < indice ){
         setTimeout(renderizarpergunta(indice +1), 2000);
     }
+    return;
 }
 
 function renderizarpergunta(indice){
@@ -71,9 +78,9 @@ function renderizarpergunta(indice){
                     <p>${opcoes[3].text}</p>
                 </div>
             </div>
-            </div>
-            <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
-        `;//coloqui o botão de reiniciar nessa tela só pra testar, deve ficar na tela de finalziação do quizz
+            </div>`;
+        let d = document.querySelector(".conteudoTela_2").lastElementChild;
+        d.scrollIntoView();
     Permissaodepergunta(indice);
 }
 
@@ -93,7 +100,10 @@ function verificar(elemento){
             }
        
         contador += 1
-        renderizarpergunta(contador) ;
+        acertos += 1
+        setTimeout(renderizarpergunta, 2000, contador) ;
+        setTimeout(rederizarResposta, 2000);
+        return;
     }
     else if(elemento.classList.contains("false")){
         elemento.classList.add("errou")
@@ -106,6 +116,65 @@ function verificar(elemento){
                 }
             }
         contador += 1
-        renderizarpergunta(contador);
+        setTimeout(renderizarpergunta, 2000, contador);
+        setTimeout(rederizarResposta, 2000);
+        return;
     }
+}
+
+function rederizarResposta(){
+    
+    if (questoes.length === document.querySelectorAll(".selecionado").length){
+        let media = Math.floor((acertos/questoes.length)*100);
+        console.log(media);
+        console.log(levels.length)
+        let tela2 = document.querySelector(".conteudoTela_2");
+        console.log("teste");
+        for (let i = 0; i < levels.length; i++) {
+            const element = levels[i];
+            if (media < levels[i+1].minValue){
+                tela2.innerHTML +=
+                ` <div class="resposta">
+                <div class="tituloResultado">
+                    <h1>${media}% de acerto:${element.title}</h1>
+                </div>
+                <div class="Resultado">
+                    <img src=${element.image}>
+                    <div class="textofinal">
+                        <p>${element.text}</p>
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
+            <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
+        </div>`;
+        let d = document.querySelector(".conteudoTela_2").lastElementChild;
+        d.scrollIntoView();
+            }else if (media > levels[levels.length-1].minValue){
+            tela2.innerHTML +=
+            ` <div class="resposta">
+            <div class="tituloResultado">
+                <h1>${media}% de acerto:${element.title}</h1>
+            </div>
+            <div class="Resultado">
+                <img src=${element.image}>
+                <div class="textofinal">
+                    <p>${element.text}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
+        <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
+    </div>`;
+    let d = document.querySelector(".conteudoTela_2").lastElementChild;
+    d.scrollIntoView();
+        }
+
+    }
+}
+    else return;
 }
