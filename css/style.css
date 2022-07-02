@@ -453,6 +453,40 @@ body{
     font-size: 20px;
     margin-top: 18px;
 }
+.boxcriacaoniveis{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600px;
+    height: auto;
+    row-gap: 24px;
+    margin: 36px 0 81px 0;
+    background-color: #FAFAFA;
+}
+.boxcriacaoniveis p{
+    font-weight: bold;
+}
+.boxnivel{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 316px;
+    width: 100%;
+    row-gap: 14px;
+    padding: 20px 18px 27px 18px;
+    background-color: #FFFFFF;
+    transition: height ease-in 1s;
+}
+.boxnivelfechado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 74px;
+    width: 100%;
+    padding: 0 18px 0 18px;
+    background-color: #FFFFFF;
+    transition: all 1s;
+}
 /* --------- MOBILE -----------------*/
 @media (max-width: 1100px) {
     .conteudoTela_1{
