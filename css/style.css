@@ -187,8 +187,10 @@ body{
             padding: 30px;
             display: flex;
             flex-direction: column;
-            transition: all 500ms;     
+            transition: all 500ms; 
+                
         }
+
                 .tituloPerguntaN{
                     width: 100%;
                     height: 135px;
@@ -486,7 +488,7 @@ body{
         margin-top: 20px;
     }
     .tituloPerguntaN{
-        height: 15vw;
+        height: 100px;
     }
     .tituloPerguntaN h1{
         font-size: 19px;
@@ -505,7 +507,7 @@ body{
         height: 100%;
     }
     .resposta {
-        width: 375px;
+        width: 100vw;
         margin-top: 20px;
     }
     .tituloResultado{
@@ -518,11 +520,11 @@ body{
         margin-top: 10px;
     }
     .Resultado img {
-        width: 315px;
+        width: 100%;
         height: 270px;
     }
     .textofinal{
-        height: 120px ;
+        height: 80px ;
         margin-top: 10px;
     }
     .textofinal p{
