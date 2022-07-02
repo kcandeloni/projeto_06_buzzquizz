@@ -73,7 +73,7 @@ function renderizarpergunta(indice){
             </div>
             </div>
             <div class="reinicio" onclick="rederizaPageQuizz(idReinicia);"><h1>Reiniciar Quizz</h1></div>
-        `;//coloqui o botão de reinciar nessa tela só pra testar, deve ficar na tela de finalziação do quizz
+        `;//coloqui o botão de reiniciar nessa tela só pra testar, deve ficar na tela de finalziação do quizz
     Permissaodepergunta(indice);
 }
 

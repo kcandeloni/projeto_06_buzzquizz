@@ -55,19 +55,20 @@ function renderizaQuizzes () {
 }
 
 function renderizaMeusQuizzes () {
-    if( myQuizzes.length > 0) {
-        document.querySelector('.caixaCriarQuizz').classList.add('escondido');
-        document.querySelector('.seusQuizzes').classList.remove('escondido');
-        const divQuizzes = document.querySelector('.seusQuizzes .blocoQuizzes');
-        divQuizzes.innerHTML = "";
-
-        for(let i = 0; i < myQuizzes.length; i++){
-            divQuizzes.innerHTML +=`
-            <div class="caixaQuizz" onclick="openQuizz('${myQuizzes[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
-            <img src=${myQuizzes[i].image} >
-            <h3>${myQuizzes[i].title}</h3>
-            </div>`;
+    if(myQuizzes !== null){
+        if( myQuizzes.length > 0) {
+            document.querySelector('.caixaCriarQuizz').classList.add('escondido');
+            document.querySelector('.seusQuizzes').classList.remove('escondido');
+            const divQuizzes = document.querySelector('.seusQuizzes .blocoQuizzes');
+            divQuizzes.innerHTML = "";
+            for(let i = 0; i < myQuizzes.length; i++){
+                divQuizzes.innerHTML +=`
+                <div class="caixaQuizz" onclick="openQuizz('${myQuizzes[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
+                <img src=${myQuizzes[i].image} >
+                <h3>${myQuizzes[i].title}</h3>
+                </div>`;
             }
+        }
     }
     else {
         document.querySelector('.seusQuizzes').classList.add('escondido');
