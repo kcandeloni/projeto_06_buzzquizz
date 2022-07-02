@@ -145,8 +145,8 @@ function renderizaQuizzes () {
     for(let i = 0; i < dataQuizz.length; i++){
         divQuizzes.innerHTML +=`
         <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
-        <img src=${dataQuizz[i].image} >
-        <h3>${dataQuizz[i].title}</h3>
+        <img src=${dataQuizz[i].image}>
+        <div><h3>${dataQuizz[i].title}</h3></div>
         </div>`;
     }
 }
@@ -162,7 +162,7 @@ function renderizaMeusQuizzes () {
                 divQuizzes.innerHTML +=`
                 <div class="caixaQuizz" onclick="openQuizz('${myQuizzes[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
                 <img src=${myQuizzes[i].image} >
-                <h3>${myQuizzes[i].title}</h3>
+                <div><h3>${myQuizzes[i].title}</h3></div>
                 </div>`;
             }
         }

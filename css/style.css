@@ -51,7 +51,7 @@ body{
     border-radius: 5px;
     margin: 8px 8px;
     transition: width linear 0.2s;
-}
+    }
 
 .conteudoTela_1 h2{
     width: 100%;
@@ -69,6 +69,7 @@ body{
     width: 348px;
     display: flex;
     justify-content: space-between;
+    transition: width linear 0.2s;
 }
 
 .subtituloBotao ion-icon{
@@ -90,6 +91,17 @@ body{
     position: relative;
 }
 
+.caixaQuizz div{
+    width: 340px;
+    height: 181px;
+    
+    bottom: 12px;
+    left: 8px;
+    position: absolute;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0%) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+    transition: width ease-out 0.3s;
+}
+
 .caixaQuizz h3{
     position: absolute;
     bottom: 15px;
@@ -106,8 +118,8 @@ body{
 
     color: #FFFFFF;
     word-break: break-all;
-    
 }
+
 
 .caixaCriarQuizz {
     width: 1068px;
@@ -136,7 +148,7 @@ body{
     text-align: center;
     word-break:normal;
 
-    color: #B9B9B9;
+
     word-break: break-all;
 }
 
@@ -465,6 +477,19 @@ body{
         width: 95vw;
         margin-left: 0;
         margin-left: 0;
+    }
+    .caixaQuizz h3{
+        width: 90vw;
+    }
+    .caixaQuizz div{
+        width: calc(100% - 8px);
+        height: calc(100% - 16px);
+        
+        bottom: 8px;
+        left: 0;
+    }
+    .subtituloBotao{
+        width: 95vw;
     }
     .informacoesdoquizz{
         width: 100%;
