@@ -23,6 +23,7 @@ function rederizaPageQuizz (Quizz) {
                 document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
             
             questoes = element.questions;
+            questoes.sort(comparador);
             renderizarpergunta(contador);
         }
     }

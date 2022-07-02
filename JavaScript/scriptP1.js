@@ -9,6 +9,10 @@ function openTela (fecha , abre){
     document.querySelector(".conteudoTela_2") = ''
 }
 
+function comparador() { 
+	return Math.random() - 0.5; 
+}
+
 function getQuizzes () {
     const promise = axios.get(`${linkQuizzes}`);
 
