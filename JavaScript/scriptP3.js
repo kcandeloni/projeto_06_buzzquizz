@@ -3,7 +3,7 @@ let url = "";
 let perguntas = 0;
 let niveis = 0;
 let infoperguntas = [];
-
+let vetorlevels = [];
 function verificarURL(string){
     try {
         let url = new URL(string);
@@ -12,7 +12,32 @@ function verificarURL(string){
           return false;
       }
 }
+function notcolor(color){
+    if(color.length != 7){
+        return true;
+    }
+    if(color[0]!= '#'){
+        return true;
+    }
+    color = color.toLowerCase();
+    let valid = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+    for(let i = 1; i < 6; i++){
+        for(let j = 0; j <= 16; j++){
+            if(j === 16){
+                return true;
+            }else if(color[i]=== valid[j]){
+                break;
+            }
+        }
+    }
+    return false;
+}
 function inseririnfobasicas(){
+    infoperguntas = [];
+    titulo = "";
+    url = "";
+    perguntas = 0;
+    niveis = 0;
     let stringtitulo = document.querySelector(".informacoesdoquizz :nth-child(1)").value;
     let stringurl = document.querySelector(".informacoesdoquizz :nth-child(2)").value;
     let stringperguntas = document.querySelector(".informacoesdoquizz :nth-child(3)").value;
@@ -109,6 +134,9 @@ function alterarestadopergunta(element){
     salvapergunta();
     element.classList.add("boxpergunta");
     element.classList.remove("boxperguntafechado");
+    setTimeout(()=> {restaurapergunta(element)}, 500);
+}
+function restaurapergunta(element){
     let numeropergunta = element.querySelector("p").innerHTML;
     numeropergunta = numeropergunta[numeropergunta.length - 1];
     element.innerHTML = `<div class="pergunta">
@@ -161,33 +189,48 @@ function alterarestadopergunta(element){
         </div>
     </div>`;
     //verificar se o elemento esta no array infoperguntas e se sim escrever o texto nos inputs
-    element.querySelector(".pergunta .textocriacao input").value = "xx";
-    console.log(infoperguntas)
+    for(let i = 0; i<infoperguntas.length; i++){
+        if(`Pergunta ${numeropergunta}` === infoperguntas[i].id){
+            let obj = infoperguntas[i];
+            element.querySelector(".pergunta .textocriacao input").value = obj.title;
+            element.querySelector(".pergunta .corpergunta input").value = obj.color;
+            element.querySelector(".respostacorreta .textocriacao input").value = obj.answers[0].text;
+            element.querySelector(".respostacorreta .urlimagem input").value = obj.answers[0].image;
+            let respostaserradas = element.querySelectorAll(".respostasincorretas > div");
+            respostaserradas[0].querySelector(".textocriacao input").value = obj.answers[1].text;
+            respostaserradas[0].querySelector(".urlimagem input").value = obj.answers[1].image;
+            respostaserradas[1].querySelector(".textocriacao input").value = obj.answers[2].text;
+            respostaserradas[1].querySelector(".urlimagem input").value = obj.answers[2].image;
+            respostaserradas[2].querySelector(".textocriacao input").value = obj.answers[3].text;
+            respostaserradas[2].querySelector(".urlimagem input").value = obj.answers[3].image;
+        }
+    }
 }
 function salvapergunta(){
     let perguntaescrita = document.querySelector(".boxpergunta");
     let respostaserradas = perguntaescrita.querySelectorAll(".respostasincorretas > div");
     let objpergunta = {
         id : perguntaescrita.querySelector(".pergunta p").innerHTML,
-        texto : perguntaescrita.querySelector(".pergunta .textocriacao input").value,
-        cor: perguntaescrita.querySelector(".pergunta .corpergunta input").value,
-        respostacorreta : {
-            resposta: perguntaescrita.querySelector(".respostacorreta .textocriacao input").value,
-            url: perguntaescrita.querySelector(".respostacorreta .urlimagem input").value
-        },
-        respostaincorreta1 : {
-            resposta: respostaserradas[0].querySelector(".textocriacao input").value,
-            url: respostaserradas[0].querySelector(".urlimagem input").value
-        },
-        respostaincorreta2 : {
-            resposta: respostaserradas[1].querySelector(".textocriacao input").value,
-            url: respostaserradas[1].querySelector(".urlimagem input").value
-        },
-        respostaincorreta3 : {
-            resposta: respostaserradas[2].querySelector(".textocriacao input").value,
-            url: respostaserradas[2].querySelector(".urlimagem input").value
-        }
-    };
+        title : perguntaescrita.querySelector(".pergunta .textocriacao input").value,
+        color: perguntaescrita.querySelector(".pergunta .corpergunta input").value,
+        answers : [{
+            text: perguntaescrita.querySelector(".respostacorreta .textocriacao input").value,
+            image: perguntaescrita.querySelector(".respostacorreta .urlimagem input").value,
+            isCorrectAnswer: true
+            },{
+            text: respostaserradas[0].querySelector(".textocriacao input").value,
+            image: respostaserradas[0].querySelector(".urlimagem input").value,
+            isCorrectAnswer: false
+            },{
+            text: respostaserradas[1].querySelector(".textocriacao input").value,
+            image: respostaserradas[1].querySelector(".urlimagem input").value,
+            isCorrectAnswer: false
+            },{
+            text: respostaserradas[2].querySelector(".textocriacao input").value,
+            image: respostaserradas[2].querySelector(".urlimagem input").value,
+            isCorrectAnswer: false
+            }]
+        };
     if(infoperguntas.length === 0){
         infoperguntas.push(objpergunta);
     }else{
@@ -196,8 +239,9 @@ function salvapergunta(){
             if(i === infoperguntas.length){
                 infoperguntas.push(objpergunta);
                 break;
-            }else if(infoperguntas[i].id === objpergunta.id){
+            }else if(infoperguntas[i].id === objpergunta.id){ //Verifica se o elemento eh igual a algum ja salvo
                 infoperguntas[i] = objpergunta;
+                break;
             }
         }
     }
@@ -205,4 +249,162 @@ function salvapergunta(){
     <ion-icon name="create-outline" onclick = alterarestadopergunta(this.parentNode)></ion-icon>`;
     perguntaescrita.classList.remove("boxpergunta");
     perguntaescrita.classList.add("boxperguntafechado");
+}
+function criarperguntas(){
+    salvapergunta();
+    if(perguntas > infoperguntas.length){
+        alert("Preencha todas as perguntas para prosseguir");
+        return;
+    }
+    for(let i=0; i < infoperguntas.length; i++){
+        let objatual = infoperguntas[i];
+        if(objatual.title.length < 20){
+            alert(`O título da pergunta ${i+1} deve possuir pelo menos 20 caracteres`);
+            return;
+        }else if(notcolor(objatual.color)){
+            alert(`A cor da pergunta ${i + 1} é inválida`);
+            return;
+        }
+        let temcerta = false;
+        let temerrada = false;
+        for(let j = 0; j < 4; j++){
+            let resp = objatual.answers[j];
+            resp.text;
+            resp.image;
+            resp.isCorrectAnswer;
+            if(resp.text === ""){
+                alert(`Preencha todas as respostas da pergunta ${i+1}`);
+                return;
+            }else if(!verificarURL(resp.image)){
+                alert(`As URLs da imagens da pergunta ${i+1} devem ser válidas`);
+                return;
+            }else if(resp.isCorrectAnswer === true){
+                temcerta = true;
+            }else if(resp.isCorrectAnswer === false){
+                temerrada = true;
+            }
+            
+        }
+        if(!(temcerta && temcerta)){
+            alert(`A pergunta ${i+1} deve possuir pelo menos uma resposta certa e uma errada`);
+            return;
+        }
+    }
+    for(let i=0; i < infoperguntas.length; i++){
+        delete infoperguntas[i].id;
+    }
+    telaniveis();
+}
+function telaniveis(){
+    let tela3_2 = document.querySelector(".boxcriacaoperguntas").parentNode;
+    let tela3_3 = document.querySelector(".boxcriacaoniveis").parentNode;
+    tela3_2.classList.add("escondido");
+    tela3_3.classList.remove("escondido");
+    let element = document.querySelector(".boxcriacaoniveis");
+    element.innerHTML = `<div class="boxnivel">
+    <p>Nível 1</p>
+    <input type="text" placeholder="Título do nível">
+    <input type="text" placeholder="% de acerto mínima">
+    <input type="text" placeholder="URL da imagem do nível">
+    <input type="text" placeholder="Descrição do nível">
+</div>`;
+    for(let i = 1; i < niveis; i++){
+        element.innerHTML += `<div class="boxnivelfechado">
+        <p>Nível ${i+1}</p>
+        <ion-icon name="create-outline" onclick="alteraestadonivel(this.parentNode)"></ion-icon>
+    </div>`;
+    }
+}
+function alteraestadonivel(element){
+    salvanivel();
+    element.classList.add("boxnivel");
+    element.classList.remove("boxnivelfechado");
+    setTimeout(()=> {restauranivel(element)}, 500);
+}
+function salvanivel(){
+    let inputs = document.querySelectorAll(".boxnivel input");
+    let objnivel = {
+        id : document.querySelector(".boxnivel p").innerHTML,
+        title: inputs[0].value,
+        image: inputs[2].value,
+        text: inputs[3].value,
+        minValue: inputs[1].value
+    }
+    if(vetorlevels.length === 0){
+        vetorlevels.push(objnivel);
+    }else{
+        for(let i = 0; i <= vetorlevels.length; i++){
+            if(i === vetorlevels.length){
+                vetorlevels.push(objnivel);
+                break;
+            }else if(vetorlevels[i].id === objnivel.id){ //Verifica se o elemento eh igual a algum ja salvo
+                vetorlevels[i] = objnivel;
+                break;
+            }
+        }
+    }
+    let nivelescrito = document.querySelector(".boxnivel");
+    nivelescrito.innerHTML = `<p>Nível ${objnivel.id[(objnivel.id.length) - 1]}</p>
+    <ion-icon name="create-outline" onclick="alteraestadonivel(this.parentNode)"></ion-icon>`;
+    nivelescrito.classList.remove("boxnivel");
+    nivelescrito.classList.add("boxnivelfechado");
+}
+function restauranivel(element){
+    let numeronivel = element.querySelector("p").innerHTML;
+    numeronivel = numeronivel[numeronivel.length - 1];
+    element.innerHTML = `<p>Nível ${numeronivel}</p>
+    <input type="text" placeholder="Título do nível">
+    <input type="text" placeholder="% de acerto mínima">
+    <input type="text" placeholder="URL da imagem do nível">
+    <input type="text" placeholder="Descrição do nível">`;
+    for(let i = 0; i< vetorlevels.length; i++){
+        if(vetorlevels[i].id === `Nível ${numeronivel}`){
+            let entradas = element.querySelectorAll("input");
+            entradas[0].value = vetorlevels[i].title;
+            entradas[1].value = vetorlevels[i].minValue;
+            entradas[2].value = vetorlevels[i].image;
+            entradas[3].value = vetorlevels[i].text;
+        }
+    }
+}
+function finalizarquizz(){
+    salvanivel();
+    if(vetorlevels.length < niveis){
+        alert("Preencha todos os níveis");
+        return;
+    }
+    let has0 = false;
+    for(let i = 0; i < vetorlevels.length; i++){
+        if(vetorlevels[i].title.length < 10){
+            alert(`O título do nível ${i + 1} deve possuir pelo menos 10 caracteres`);
+            return;
+        }else if(Number(vetorlevels[i].minValue) == NaN){
+            alert(`O percentual mínimo de acerto do nível ${i+1} deve ser um número`);
+            return;
+        }
+        vetorlevels[i].minValue = Number(vetorlevels[i].minValue);
+        if(vetorlevels[i].minValue > 100 || vetorlevels[i].minValue < 0){
+            alert(`O percentual mínimo de acerto do nível ${i+1} deve ser um número entre 0 e 100`);
+            return;
+        }if(!verificarURL(vetorlevels[i].image)){
+            alert(`A URL do nível ${i+1} é inválida`);
+            return;
+        }if(vetorlevels[i].text < 30){
+            alert(`A descrição do nível ${i+1} deve possuir pelo menos 30 caracteres`);
+            return;
+        }if(vetorlevels[i].minValue === 0){
+            has0 = true;
+        }
+    }
+    if(!has0){
+        alert("É obrigatório existir pelo menos um nível com taxa de acerto 0%");
+        return;
+    }
+    for(let i = 0; i < vetorlevels.length; i++){
+        delete vetorlevels[i].id;
+    }
+    sucessodoquizz();
+}
+function sucessodoquizz(){
+    console.log(vetorlevels)
 }
