@@ -134,7 +134,7 @@ function rederizarResposta(){
         /* ordena level*/
         let desordenado = true;
         let aux = levels[0];
-        while(desordenado){
+        while(desordenado && levels.length > 1){
             for(let i = 1; i < levels.length; i++){
                 if(aux.minValue > levels[i].minValue){
                     levels[i-1] = levels[i];
