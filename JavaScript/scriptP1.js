@@ -109,8 +109,6 @@ const listaSerializada = localStorage.getItem("tOtaco"); // Pegando de volta a s
 
 let myQuizzes = JSON.parse(listaSerializada); // Transformando a string de volta na array original
 
-console.log(myQuizzes);
-
 function openTela (fecha , abre){
     document.querySelector(`.${fecha}`).classList.toggle('escondido');
     document.querySelector(`.${abre}`).classList.toggle('escondido');
@@ -161,7 +159,7 @@ function renderizaMeusQuizzes () {
             divQuizzes.innerHTML = "";
             for(let i = 0; i < myQuizzes.length; i++){
                 divQuizzes.innerHTML +=`
-                <div class="caixaQuizz" onclick="openQuizz('${myQuizzes[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
+                <div class="caixaQuizz" onclick="rederizaMyQuizzes(myQuizzes, '${myQuizzes[i].id}');;openTela('conteudoTela_1','conteudoTela_2');">
                 <img src=${myQuizzes[i].image} >
                 <div><h3>${myQuizzes[i].title}</h3></div>
                 </div>`;

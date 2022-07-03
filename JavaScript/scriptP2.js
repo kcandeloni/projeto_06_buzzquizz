@@ -32,6 +32,13 @@ function openQuizz (idQuizz) {
     
 }
 
+function rederizaMyQuizzes (Quizz, idQuizz) {
+    let objeto = {
+        data: Quizz,
+    }
+    controle = idQuizz;
+    rederizaPageQuizz(objeto);
+}
 
 function rederizaPageQuizz (Quizz) {
     acertos = 0;
