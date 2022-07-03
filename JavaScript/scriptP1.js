@@ -9,6 +9,8 @@ const listaSerializada = localStorage.getItem("tOtaco"); // Pegando de volta a s
 
 let myQuizzes = JSON.parse(listaSerializada); // Transformando a string de volta na array original
 
+openLoading();
+
 function openTela (fecha , abre){
     openLoading();
     document.querySelector(`.${fecha}`).classList.toggle('escondido');
