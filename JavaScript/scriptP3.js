@@ -425,11 +425,11 @@ function sucessodoquizz(){
 function salvaidquizzcriado(promessa){
     quizzcriado = promessa.data;
     try {
-        const listaSerializada = localStorage.getItem("tOtaco");
+        let listaSerializada = localStorage.getItem("tOtaco");
         listaSerializada = JSON.parse(listaSerializada);
         listaSerializada.push(quizzcriado);
-        exemploSerializado = JSON.stringify(listaSerializada);
-        localStorage.setItem("tOtaco", exemploSerializado);
+        listaSerializada = JSON.stringify(listaSerializada);
+        localStorage.setItem("tOtaco", listaSerializada);
     } catch (error) {
         let meusquizzes = [];
         meusquizzes.push(quizzcriado);
