@@ -406,5 +406,23 @@ function finalizarquizz(){
     sucessodoquizz();
 }
 function sucessodoquizz(){
-    console.log(vetorlevels)
+    let tela3_3 = document.querySelector(".boxcriacaoniveis").parentNode;
+    let tela3_4 = document.querySelector(".conteudoTela_3 a").parentNode;
+    tela3_3.classList.add("escondido");
+    tela3_4.classList.remove("escondido");
+    document.querySelector(".caixaimgcriacao img").src = url;
+    document.querySelector(".caixaimgcriacao p").innerHTML = titulo;
+    let objquizz = {
+        title: titulo,
+        image: url,
+        questions : infoperguntas,
+        levels : vetorlevels
+    }
+    let promessa = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",objquizz);
 }
+/*function voltarparahome(){
+
+}
+function acessarquizzcriado(){
+
+}*/
