@@ -6,12 +6,19 @@ let opcoes = [];
 let levels =[];
 let idReinicia;
 function openQuizz (idQuizz) {
-    const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes");
     controle = idQuizz;
     promise.then(rederizaPageQuizz);
     
 }
 
+function rederizaMyQuizzes (Quizz, idQuizz) {
+    let objeto = {
+        data: Quizz,
+    }
+    controle = idQuizz;
+    rederizaPageQuizz(objeto);
+}
 
 function rederizaPageQuizz (Quizz) {
     acertos = 0;
