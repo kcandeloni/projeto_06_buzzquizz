@@ -2,6 +2,7 @@ let titulo = "";
 let url = "";
 let perguntas = 0;
 let niveis = 0;
+let quizzcriado;
 let infoperguntas = [];
 let vetorlevels = [];
 function verificarURL(string){
@@ -418,11 +419,33 @@ function sucessodoquizz(){
         questions : infoperguntas,
         levels : vetorlevels
     }
-    let promessa = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",objquizz);
+    let promessa = axios.post("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes",objquizz);
+    promessa.then(salvaidquizzcriado);
 }
-/*function voltarparahome(){
+function salvaidquizzcriado(promessa){
+    quizzcriado = promessa.data;
+    try {
+        const listaSerializada = localStorage.getItem("tOtaco");
+        listaSerializada = JSON.parse(listaSerializada);
+        listaSerializada.push(quizzcriado);
+        exemploSerializado = JSON.stringify(listaSerializada);
+        localStorage.setItem("tOtaco", exemploSerializado);
+    } catch (error) {
+        let meusquizzes = [];
+        meusquizzes.push(quizzcriado);
+        meusquizzes = JSON.stringify(meusquizzes);
+        localStorage.setItem("tOtaco",meusquizzes);
+    }
+}
 
+function voltarparahome(){
+    window.location.reload();    
 }
+
 function acessarquizzcriado(){
-
-}*/
+    let tela3_4 = document.querySelector(".conteudoTela_3 a").parentNode;
+    let tela2 = document.querySelector(".conteudoTela_2");
+    tela3_4.classList.add("escondido");
+    tela2.classList.remove("escondido");
+    openQuizz(quizzcriado.id);
+}

@@ -1,4 +1,4 @@
-const linkQuizzes = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
+const linkQuizzes = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
 let dataQuizz;
 /*
 const exemplo = [{
@@ -145,7 +145,7 @@ function renderizaQuizzes () {
 
     for(let i = 0; i < dataQuizz.length; i++){
         divQuizzes.innerHTML +=`
-        <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
+    <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
         <img src=${dataQuizz[i].image}>
         <div><h3>${dataQuizz[i].title}</h3></div>
         </div>`;
