@@ -1,6 +1,6 @@
 const linkQuizzes = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
 let dataQuizz;
-let idsMyQuizzes;
+let idsMyQuizzes = [];
 /*
 const exemploSerializado = JSON.stringify(exemplo); // Array convertida pra uma string
 
@@ -55,7 +55,7 @@ function renderizaQuizzes () {
     const divQuizzes = document.querySelector('.todosQuizzes .blocoQuizzes');
     divQuizzes.innerHTML = "";
 
-    for(let i = 0; i < dataQuizz.length; i++){
+    for(let i = 0; i < dataQuizzfilter.length; i++){
         divQuizzes.innerHTML +=`
     <div class="caixaQuizz" onclick="openQuizz('${dataQuizzfilter[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
         <img src=${dataQuizzfilter[i].image}>
