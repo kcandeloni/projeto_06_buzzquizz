@@ -5,6 +5,26 @@ let questoes = [] ;
 let opcoes = [];
 let levels =[];
 let idReinicia;
+/*function openmeuQuizz(idQuizz){
+    const listaSerializada = localStorage.getItem("tOtaco");
+    listaSerializada = JSON.parse(listaSerializada);
+    for(let i = 0; i < listaSerializada.length; i++){
+        if(listaSerializada[i].id === idQuizz){
+            let tela2 = document.querySelector(".conteudoTela_2");
+            let imgtitulo = document.querySelector(".titulo_quiz");
+            tela2.innerHTML = ''; 
+            tela2.innerHTML +=
+            `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;
+            //document.querySelector(".titulo_quiz").style.backgroundImage=`url(${element.image})`;
+            document.querySelector(".titulo_quiz").style.backgroundImage= `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            url(${element.image})`;
+            questoes = element.questions;
+            levels = element.levels;
+            questoes.sort(comparador);
+            renderizarpergunta(contador);
+        }
+    }
+}*/
 function openQuizz (idQuizz) {
     const promise = axios.get("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes");
     controle = idQuizz;
@@ -12,6 +32,13 @@ function openQuizz (idQuizz) {
     
 }
 
+function rederizaMyQuizzes (Quizz, idQuizz) {
+    let objeto = {
+        data: Quizz,
+    }
+    controle = idQuizz;
+    rederizaPageQuizz(objeto);
+}
 
 function rederizaPageQuizz (Quizz) {
     acertos = 0;
@@ -54,10 +81,10 @@ function renderizarpergunta(indice){
     let a = questoes[indice]
     opcoes = a.answers
     opcoes.sort(comparador);
-    let tela2 = document.querySelector(".conteudoTela_2")
+    let tela2 = document.querySelector(".conteudoTela_2");
     tela2.innerHTML +=
         `<div class="perguntaN">
-        <div class="tituloPerguntaN" id="${indice}">
+        <div class="tituloPerguntaN" id="${indice}" style = "background-color: ${a.color};">
                 <h1>${a.title}</h1>
             </div>
             <div class="opcoesN">
@@ -79,6 +106,7 @@ function renderizarpergunta(indice){
                 </div>
             </div>
             </div>`;
+
         let d = document.querySelector(".conteudoTela_2").lastElementChild;
         d.scrollIntoView({behavior: "smooth"});
     Permissaodepergunta(indice); 
@@ -142,6 +170,7 @@ function rederizarResposta(){
                 }
                 aux = levels[i];
                 desordenado = false;
+                console.log("testeRapido");
                 for(let y = 1; y < levels.length; y++){
                     if(levels[i-1].minValue >= levels[i].minValue ){
                         desordenado = true;

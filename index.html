@@ -15,9 +15,11 @@
 </head>
 <body>
     <div class="topo">
-        <h1>BuzzQuizz</h1>
+        <h1 onclick="window.location.reload();">BuzzQuizz</h1>
     </div>
-
+    <div class="telaLoading escondido"><div class="loadingio-spinner-spinner-e3up0c2lne"><div class="ldio-3f4blomfbb5">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div></div><h1>Carregando</h1></div>
      <div class="conteudoTela_1"><!-- add .escondido quando chamar tela 2,3 e criacao de Quizz -->
         <div class="blocoQuizzes"><!-- add .escondido se usuário já tem quizzes-->
             <div class="caixaCriarQuizz">
@@ -30,34 +32,6 @@
                 <h2>Seus os Quizzes</h2><ion-icon onclick="openTela('conteudoTela_1','conteudoTela_3');" name="add-circle"></ion-icon>
             </div>  
             <div class="blocoQuizzes">
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
-                <div class="caixaQuizz" onclick="openTela('conteudoTela_1','conteudoTela_2');"><!--Molde vai para o JS depois-->
-                    <img src="img/Rectangle 34.png" >
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
             </div>
         </div>
         <h2>Todos os Quizzes</h2>
@@ -91,6 +65,16 @@
         <div class="boxcriacaoniveis">
         </div>
         <button onclick="finalizarquizz()">Finalizar Quizz</button>
+    </div>
+    <div class="conteudoTela_3 escondido">
+        <p>Seu quizz está pronto!</p>
+        <div class="caixaimgcriacao">
+            <img src="">
+            <p>titulo</p>
+        </div>
+        <img src="">
+        <button onclick="acessarquizzcriado()">Acessar Quizz</button>
+        <a onclick="voltarparahome()">Voltar para home</a>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

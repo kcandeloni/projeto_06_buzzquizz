@@ -2,8 +2,11 @@ let titulo = "";
 let url = "";
 let perguntas = 0;
 let niveis = 0;
+let quizzcriado;
 let infoperguntas = [];
 let vetorlevels = [];
+let ultimaperguntasalva;
+let ultimonivelsalvo;
 function verificarURL(string){
     try {
         let url = new URL(string);
@@ -249,20 +252,30 @@ function salvapergunta(){
     <ion-icon name="create-outline" onclick = alterarestadopergunta(this.parentNode)></ion-icon>`;
     perguntaescrita.classList.remove("boxpergunta");
     perguntaescrita.classList.add("boxperguntafechado");
+    ultimaperguntasalva = perguntaescrita;
 }
 function criarperguntas(){
     salvapergunta();
     if(perguntas > infoperguntas.length){
         alert("Preencha todas as perguntas para prosseguir");
+        ultimaperguntasalva.classList.add("boxpergunta");
+        ultimaperguntasalva.classList.remove("boxperguntafechado");
+        restaurapergunta(ultimaperguntasalva);
         return;
     }
     for(let i=0; i < infoperguntas.length; i++){
         let objatual = infoperguntas[i];
         if(objatual.title.length < 20){
             alert(`O título da pergunta ${i+1} deve possuir pelo menos 20 caracteres`);
+            ultimaperguntasalva.classList.add("boxpergunta");
+            ultimaperguntasalva.classList.remove("boxperguntafechado");
+            restaurapergunta(ultimaperguntasalva);
             return;
         }else if(notcolor(objatual.color)){
             alert(`A cor da pergunta ${i + 1} é inválida`);
+            ultimaperguntasalva.classList.add("boxpergunta");
+            ultimaperguntasalva.classList.remove("boxperguntafechado");
+            restaurapergunta(ultimaperguntasalva);
             return;
         }
         let temcerta = false;
@@ -274,9 +287,15 @@ function criarperguntas(){
             resp.isCorrectAnswer;
             if(resp.text === ""){
                 alert(`Preencha todas as respostas da pergunta ${i+1}`);
+                ultimaperguntasalva.classList.add("boxpergunta");
+                ultimaperguntasalva.classList.remove("boxperguntafechado");
+                restaurapergunta(ultimaperguntasalva);
                 return;
             }else if(!verificarURL(resp.image)){
                 alert(`As URLs da imagens da pergunta ${i+1} devem ser válidas`);
+                ultimaperguntasalva.classList.add("boxpergunta");
+                ultimaperguntasalva.classList.remove("boxperguntafechado");
+                restaurapergunta(ultimaperguntasalva);
                 return;
             }else if(resp.isCorrectAnswer === true){
                 temcerta = true;
@@ -287,6 +306,9 @@ function criarperguntas(){
         }
         if(!(temcerta && temcerta)){
             alert(`A pergunta ${i+1} deve possuir pelo menos uma resposta certa e uma errada`);
+            ultimaperguntasalva.classList.add("boxpergunta");
+            ultimaperguntasalva.classList.remove("boxperguntafechado");
+            restaurapergunta(ultimaperguntasalva);
             return;
         }
     }
@@ -348,6 +370,7 @@ function salvanivel(){
     <ion-icon name="create-outline" onclick="alteraestadonivel(this.parentNode)"></ion-icon>`;
     nivelescrito.classList.remove("boxnivel");
     nivelescrito.classList.add("boxnivelfechado");
+    ultimonivelsalvo = nivelescrito;
 }
 function restauranivel(element){
     let numeronivel = element.querySelector("p").innerHTML;
@@ -370,6 +393,9 @@ function restauranivel(element){
 function finalizarquizz(){
     salvanivel();
     if(vetorlevels.length < niveis){
+        restauranivel(ultimonivelsalvo);
+        ultimonivelsalvo.classList.add("boxnivel");
+        ultimonivelsalvo.classList.remove("boxnivelfechado");
         alert("Preencha todos os níveis");
         return;
     }
@@ -377,20 +403,35 @@ function finalizarquizz(){
     for(let i = 0; i < vetorlevels.length; i++){
         if(vetorlevels[i].title.length < 10){
             alert(`O título do nível ${i + 1} deve possuir pelo menos 10 caracteres`);
+            ultimonivelsalvo.classList.add("boxnivel");
+            ultimonivelsalvo.classList.remove("boxnivelfechado");
+            restauranivel(ultimonivelsalvo);
             return;
         }else if(Number(vetorlevels[i].minValue) == NaN){
             alert(`O percentual mínimo de acerto do nível ${i+1} deve ser um número`);
+            ultimonivelsalvo.classList.add("boxnivel");
+            ultimonivelsalvo.classList.remove("boxnivelfechado");
+            restauranivel(ultimonivelsalvo);
             return;
         }
         vetorlevels[i].minValue = Number(vetorlevels[i].minValue);
         if(vetorlevels[i].minValue > 100 || vetorlevels[i].minValue < 0){
             alert(`O percentual mínimo de acerto do nível ${i+1} deve ser um número entre 0 e 100`);
+            ultimonivelsalvo.classList.add("boxnivel");
+            ultimonivelsalvo.classList.remove("boxnivelfechado");
+            restauranivel(ultimonivelsalvo);
             return;
         }if(!verificarURL(vetorlevels[i].image)){
             alert(`A URL do nível ${i+1} é inválida`);
+            ultimonivelsalvo.classList.add("boxnivel");
+            ultimonivelsalvo.classList.remove("boxnivelfechado");
+            restauranivel(ultimonivelsalvo);
             return;
         }if(vetorlevels[i].text < 30){
             alert(`A descrição do nível ${i+1} deve possuir pelo menos 30 caracteres`);
+            restauranivel(ultimonivelsalvo);
+            ultimonivelsalvo.classList.add("boxnivel");
+            ultimonivelsalvo.classList.remove("boxnivelfechado");
             return;
         }if(vetorlevels[i].minValue === 0){
             has0 = true;
@@ -398,6 +439,9 @@ function finalizarquizz(){
     }
     if(!has0){
         alert("É obrigatório existir pelo menos um nível com taxa de acerto 0%");
+        ultimonivelsalvo.classList.add("boxnivel");
+        ultimonivelsalvo.classList.remove("boxnivelfechado");
+        restauranivel(ultimonivelsalvo);
         return;
     }
     for(let i = 0; i < vetorlevels.length; i++){
@@ -406,5 +450,45 @@ function finalizarquizz(){
     sucessodoquizz();
 }
 function sucessodoquizz(){
-    console.log(vetorlevels)
+    let tela3_3 = document.querySelector(".boxcriacaoniveis").parentNode;
+    let tela3_4 = document.querySelector(".conteudoTela_3 a").parentNode;
+    tela3_3.classList.add("escondido");
+    tela3_4.classList.remove("escondido");
+    document.querySelector(".caixaimgcriacao img").src = url;
+    document.querySelector(".caixaimgcriacao p").innerHTML = titulo;
+    let objquizz = {
+        title: titulo,
+        image: url,
+        questions : infoperguntas,
+        levels : vetorlevels
+    }
+    let promessa = axios.post("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes",objquizz);
+    promessa.then(salvaidquizzcriado);
+}
+function salvaidquizzcriado(promessa){
+    quizzcriado = promessa.data;
+    try {
+        let listaSerializada = localStorage.getItem("tOtaco");
+        listaSerializada = JSON.parse(listaSerializada);
+        listaSerializada.push(quizzcriado);
+        listaSerializada = JSON.stringify(listaSerializada);
+        localStorage.setItem("tOtaco", listaSerializada);
+    } catch (error) {
+        let meusquizzes = [];
+        meusquizzes.push(quizzcriado);
+        meusquizzes = JSON.stringify(meusquizzes);
+        localStorage.setItem("tOtaco",meusquizzes);
+    }
+}
+
+function voltarparahome(){
+    window.location.reload();    
+}
+
+function acessarquizzcriado(){
+    let tela3_4 = document.querySelector(".conteudoTela_3 a").parentNode;
+    let tela2 = document.querySelector(".conteudoTela_2");
+    tela3_4.classList.add("escondido");
+    tela2.classList.remove("escondido");
+    openQuizz(quizzcriado.id);
 }
