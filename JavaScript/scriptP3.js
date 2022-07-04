@@ -3,7 +3,7 @@ let url = "";
 let perguntas = 0;
 let niveis = 0;
 let infoperguntas = [];
-
+let vetorlevels = [];
 function verificarURL(string){
     try {
         let url = new URL(string);
@@ -296,5 +296,115 @@ function criarperguntas(){
     telaniveis();
 }
 function telaniveis(){
-    console.log("prototipo")
+    let tela3_2 = document.querySelector(".boxcriacaoperguntas").parentNode;
+    let tela3_3 = document.querySelector(".boxcriacaoniveis").parentNode;
+    tela3_2.classList.add("escondido");
+    tela3_3.classList.remove("escondido");
+    let element = document.querySelector(".boxcriacaoniveis");
+    element.innerHTML = `<div class="boxnivel">
+    <p>Nível 1</p>
+    <input type="text" placeholder="Título do nível">
+    <input type="text" placeholder="% de acerto mínima">
+    <input type="text" placeholder="URL da imagem do nível">
+    <input type="text" placeholder="Descrição do nível">
+</div>`;
+    for(let i = 1; i < niveis; i++){
+        element.innerHTML += `<div class="boxnivelfechado">
+        <p>Nível ${i+1}</p>
+        <ion-icon name="create-outline" onclick="alteraestadonivel(this.parentNode)"></ion-icon>
+    </div>`;
+    }
+}
+function alteraestadonivel(element){
+    salvanivel();
+    element.classList.add("boxnivel");
+    element.classList.remove("boxnivelfechado");
+    setTimeout(()=> {restauranivel(element)}, 500);
+}
+function salvanivel(){
+    let inputs = document.querySelectorAll(".boxnivel input");
+    let objnivel = {
+        id : document.querySelector(".boxnivel p").innerHTML,
+        title: inputs[0].value,
+        image: inputs[2].value,
+        text: inputs[3].value,
+        minValue: inputs[1].value
+    }
+    if(vetorlevels.length === 0){
+        vetorlevels.push(objnivel);
+    }else{
+        for(let i = 0; i <= vetorlevels.length; i++){
+            if(i === vetorlevels.length){
+                vetorlevels.push(objnivel);
+                break;
+            }else if(vetorlevels[i].id === objnivel.id){ //Verifica se o elemento eh igual a algum ja salvo
+                vetorlevels[i] = objnivel;
+                break;
+            }
+        }
+    }
+    let nivelescrito = document.querySelector(".boxnivel");
+    nivelescrito.innerHTML = `<p>Nível ${objnivel.id[(objnivel.id.length) - 1]}</p>
+    <ion-icon name="create-outline" onclick="alteraestadonivel(this.parentNode)"></ion-icon>`;
+    nivelescrito.classList.remove("boxnivel");
+    nivelescrito.classList.add("boxnivelfechado");
+}
+function restauranivel(element){
+    let numeronivel = element.querySelector("p").innerHTML;
+    numeronivel = numeronivel[numeronivel.length - 1];
+    element.innerHTML = `<p>Nível ${numeronivel}</p>
+    <input type="text" placeholder="Título do nível">
+    <input type="text" placeholder="% de acerto mínima">
+    <input type="text" placeholder="URL da imagem do nível">
+    <input type="text" placeholder="Descrição do nível">`;
+    for(let i = 0; i< vetorlevels.length; i++){
+        if(vetorlevels[i].id === `Nível ${numeronivel}`){
+            let entradas = element.querySelectorAll("input");
+            entradas[0].value = vetorlevels[i].title;
+            entradas[1].value = vetorlevels[i].minValue;
+            entradas[2].value = vetorlevels[i].image;
+            entradas[3].value = vetorlevels[i].text;
+        }
+    }
+}
+function finalizarquizz(){
+    salvanivel();
+    if(vetorlevels.length < niveis){
+        alert("Preencha todos os níveis");
+        return;
+    }
+    let has0 = false;
+    for(let i = 0; i < vetorlevels.length; i++){
+        if(vetorlevels[i].title.length < 10){
+            alert(`O título do nível ${i + 1} deve possuir pelo menos 10 caracteres`);
+            return;
+        }else if(Number(vetorlevels[i].minValue) == NaN){
+            alert(`O percentual mínimo de acerto do nível ${i+1} deve ser um número`);
+            return;
+        }
+        vetorlevels[i].minValue = Number(vetorlevels[i].minValue);
+        if(vetorlevels[i].minValue > 100 || vetorlevels[i].minValue < 0){
+            alert(`O percentual mínimo de acerto do nível ${i+1} deve ser um número entre 0 e 100`);
+            return;
+        }if(!verificarURL(vetorlevels[i].image)){
+            alert(`A URL do nível ${i+1} é inválida`);
+            return;
+        }if(vetorlevels[i].text < 30){
+            alert(`A descrição do nível ${i+1} deve possuir pelo menos 30 caracteres`);
+            return;
+        }if(vetorlevels[i].minValue === 0){
+            has0 = true;
+        }
+    }
+    if(!has0){
+        alert("É obrigatório existir pelo menos um nível com taxa de acerto 0%");
+        return;
+    }
+    for(let i = 0; i < vetorlevels.length; i++){
+        delete vetorlevels[i].id;
+    }
+    sucessodoquizz();
+}
+function sucessodoquizz(){
+    console.log(vetorlevels)
 }
