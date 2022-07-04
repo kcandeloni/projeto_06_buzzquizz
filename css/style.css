@@ -31,6 +31,7 @@ body{
     line-height: 43px;
 
     color: #FFFFFF;
+    cursor: pointer;
 }  
 
 /* Tela de Loading */
