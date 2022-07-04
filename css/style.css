@@ -289,7 +289,6 @@ body{
     align-items: center;
     transition: all 500ms;
     position: relative;
-    background-color: #000000;
 }
         .titulo_quiz{
             width: 100%;
