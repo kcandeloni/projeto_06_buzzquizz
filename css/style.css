@@ -154,12 +154,7 @@ body{
     margin: 8px 8px;
     transition: all 0.5s;    
 }
-.conteudoTela_1 img:hover{
-    cursor: pointer;
-}
-.conteudoTela_1 img:active{
-    scale: 0.9;
-}
+
 
 .conteudoTela_1 h2{
     width: 100%;
@@ -188,15 +183,22 @@ body{
     cursor: pointer;
 }
 
-.blocoQuizzes {
-    
+.blocoQuizzes {  
     display: flex;
     flex-wrap: wrap;
-    
 }
 
 .caixaQuizz{
     position: relative;
+    transition: all 500ms;
+}
+
+.caixaQuizz:hover{
+    cursor: pointer;
+}
+
+.caixaQuizz:active{
+    scale: 0.9;
 }
 
 .caixaQuizz div{
@@ -286,6 +288,8 @@ body{
     flex-direction: column;
     align-items: center;
     transition: all 500ms;
+    position: relative;
+    background-color: #000000;
 }
         .titulo_quiz{
             width: 100%;
@@ -444,7 +448,8 @@ body{
             justify-content: center;
             align-items: center;
             transition: all 500ms;
-            
+            position: absolute;
+            bottom: -50px;       
         }
             .voltar p{
                 font-size: 21;

@@ -193,11 +193,11 @@ function rederizarResposta(){
                             <p>${levels[i].text}</p>
                         </div>
                     </div>
-                 </div>
+                </div>
     
-            <div class="reinicio" onclick="rederizaPageQuizz(idReinicia)"><h1>Reiniciar Quizz</h1></div>
-            <div class="voltar" onclick="openTela('conteudoTela_2','conteudoTela_1');"> <p>Voltar pra Home</p> </div>
-            </div>`;
+                <div class="reinicio" onclick="rederizaPageQuizz(idReinicia)"><h1>Reiniciar Quizz</h1></div>
+                <div class="voltar" onclick="location.reload(true)"> <p>Voltar pra Home</p> </div>
+                `;
             let d = document.querySelector(".conteudoTela_2").lastElementChild;
             d.scrollIntoView({behavior: "smooth"});
             break;
