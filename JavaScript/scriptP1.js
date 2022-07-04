@@ -1,5 +1,6 @@
 const linkQuizzes = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
 let dataQuizz;
+let idsMyQuizzes;
 /*
 const exemploSerializado = JSON.stringify(exemplo); // Array convertida pra uma string
 
@@ -50,14 +51,15 @@ function alertaErro (erro) {
 }
 
 function renderizaQuizzes () {
+    dataQuizzfilter = dataQuizz.filter(filtraQuizzUser);
     const divQuizzes = document.querySelector('.todosQuizzes .blocoQuizzes');
     divQuizzes.innerHTML = "";
 
     for(let i = 0; i < dataQuizz.length; i++){
         divQuizzes.innerHTML +=`
-    <div class="caixaQuizz" onclick="openQuizz('${dataQuizz[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
-        <img src=${dataQuizz[i].image}>
-        <div><h3>${dataQuizz[i].title}</h3></div>
+    <div class="caixaQuizz" onclick="openQuizz('${dataQuizzfilter[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
+        <img src=${dataQuizzfilter[i].image}>
+        <div><h3>${dataQuizzfilter[i].title}</h3></div>
         </div>`;
     }
 }
@@ -69,12 +71,14 @@ function renderizaMeusQuizzes () {
             document.querySelector('.seusQuizzes').classList.remove('escondido');
             const divQuizzes = document.querySelector('.seusQuizzes .blocoQuizzes');
             divQuizzes.innerHTML = "";
+            idsMyQuizzes = [];
             for(let i = 0; i < myQuizzes.length; i++){
                 divQuizzes.innerHTML +=`
                 <div class="caixaQuizz" onclick="rederizaMyQuizzes(myQuizzes, '${myQuizzes[i].id}');openTela('conteudoTela_1','conteudoTela_2');">
                 <img src=${myQuizzes[i].image} >
                 <div><h3>${myQuizzes[i].title}</h3></div>
                 </div>`;
+                idsMyQuizzes.push(myQuizzes[i].id);
             }
         }
     }
@@ -82,6 +86,16 @@ function renderizaMeusQuizzes () {
         document.querySelector('.seusQuizzes').classList.add('escondido');
             
     }
+}
+
+function filtraQuizzUser (obj){
+    for(let i = 0; i < idsMyQuizzes.length; i++){
+        if(obj.id === idsMyQuizzes[i]){
+            console.log(idsMyQuizzes[i]);
+            return false;
+        }
+    }
+    return true;
 }
 
 getQuizzes();
