@@ -5,6 +5,8 @@ let questoes = [] ;
 let opcoes = [];
 let levels =[];
 let idReinicia;
+let materialTela2;
+let k;
 /*function openmeuQuizz(idQuizz){
     const listaSerializada = localStorage.getItem("tOtaco");
     listaSerializada = JSON.parse(listaSerializada);
@@ -26,7 +28,7 @@ let idReinicia;
     }
 }*/
 function openQuizz (idQuizz) {
-    const promise = axios.get("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes");
+    const promise = axios.get("https://mock-api.driven.com.br/api/vs/buzzquizz/quizzes");
     controle = idQuizz;
     promise.then(rederizaPageQuizz);
     
@@ -46,12 +48,13 @@ function rederizaPageQuizz (Quizz) {
     questoes = [] ;
     opcoes = [];
     idReinicia = Quizz;
-    let materialTela2 = Quizz.data;
+    materialTela2 = Quizz.data;
     let tela2 = document.querySelector(".conteudoTela_2")
     let imgtitulo = document.querySelector(".titulo_quiz")
     for (let i = 0; i < materialTela2.length; i++) {
         let element = materialTela2[i];
         if (element.id == controle){
+            k = element.id
             tela2.innerHTML = ''; 
             tela2.innerHTML +=
                 `<div class="titulo_quiz"><h1>${element.title}</h1></div> `;

@@ -462,7 +462,7 @@ function sucessodoquizz(){
         questions : infoperguntas,
         levels : vetorlevels
     }
-    let promessa = axios.post("https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes",objquizz);
+    let promessa = axios.post("https://mock-api.driven.com.br/api/vs/buzzquizz/quizzes",objquizz);
     promessa.then(salvaidquizzcriado);
 }
 function salvaidquizzcriado(promessa){

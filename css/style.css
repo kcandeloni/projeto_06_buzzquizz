@@ -8,6 +8,13 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+button:hover{
+    cursor: pointer;
+}
+button:active{
+    scale: 0.95;
+}
+
 .topo{
     display: flex;
     justify-content: center;
@@ -289,6 +296,7 @@ body{
     align-items: center;
     transition: all 500ms;
     position: relative;
+
 }
         .titulo_quiz{
             width: 100%;
