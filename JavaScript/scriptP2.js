@@ -1,4 +1,5 @@
 let controle = 0;
+let h=0;
 let contador = 0;
 let acertos = 0;
 let questoes = [] ;
@@ -43,6 +44,7 @@ function rederizaMyQuizzes (Quizz, idQuizz) {
 }
 
 function rederizaPageQuizz (Quizz) {
+    h=0;
     acertos = 0;
     contador = 0;
     questoes = [] ;
@@ -73,42 +75,42 @@ function rederizaPageQuizz (Quizz) {
 
 function Permissaodepergunta(indice){
     let k = document.querySelectorAll(".selecionado").length
-    console.log(k)
     if(indice < questoes.length && k < indice ){
         setTimeout(renderizarpergunta(indice +1), 2000);
     }
     return;
 }
+function renderizarOpcoes(array){
+    let tela2 = document.querySelector(`.target${h}`);
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        tela2.innerHTML +=
+        `
+        <div class="${array[i].isCorrectAnswer}" onclick="verificar(this)">
+        <img src="${array[i].image}">
+        <p>${array[i].text}</p>
+        </div>    
+        `
 
+    }
+    h = h +1;
+}
 function renderizarpergunta(indice){
     let a = questoes[indice]
     opcoes = a.answers
     opcoes.sort(comparador);
+    console.log(opcoes)
+    console.log(a);
     let tela2 = document.querySelector(".conteudoTela_2");
     tela2.innerHTML +=
         `<div class="perguntaN">
-        <div class="tituloPerguntaN" id="${indice}" style = "background-color: ${a.color};">
+        <div class="tituloPerguntaN" style = "background-color: ${a.color};">
                 <h1>${a.title}</h1>
             </div>
-            <div class="opcoesN">
-                <div class="${opcoes[0].isCorrectAnswer}" onclick="verificar(this)">
-                    <img src="${opcoes[0].image}">
-                    <p>${opcoes[0].text}</p>
-                </div>
-                <div class="${opcoes[1].isCorrectAnswer}" onclick="verificar(this)" >
-                    <img src=${opcoes[1].image}>
-                    <p>${opcoes[1].text}</p>
-                </div>
-                <div class="${opcoes[2].isCorrectAnswer}" onclick="verificar(this)">
-                    <img src=${opcoes[2].image}>
-                    <p>${opcoes[2].text}</p>
-                </div>
-                <div class="${opcoes[3].isCorrectAnswer}" onclick="verificar(this)">
-                    <img src=${opcoes[3].image}>
-                    <p>${opcoes[3].text}</p>
-                </div>
+            <div class="opcoesN target${h}">
             </div>
             </div>`;
+        renderizarOpcoes(opcoes);
 
         let d = document.querySelector(".conteudoTela_2").lastElementChild;
         d.scrollIntoView({behavior: "smooth"});
